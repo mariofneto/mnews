@@ -1,6 +1,8 @@
 package com.example.mnews.controller;
 
+import com.example.mnews.model.Noticia;
 import com.example.mnews.service.NoticiaService;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +23,7 @@ public class NoticiaController {
     }
 
     @GetMapping("/noticia")
-    public Mono<ResponseEntity<String>> getNoticia(){
-        return noticiaService
-                .getNoticia()
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(ResponseEntity.noContent().build());
+    public Noticia getNoticia() throws MessagingException {
+        return noticiaService.getNoticia();
     }
 }
