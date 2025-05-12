@@ -24,6 +24,6 @@ public class NoticiaController {
 
     @GetMapping("/noticia")
     public Noticia getNoticia() throws MessagingException {
-        return noticiaService.getNoticia();
+        return noticiaService.getNoticiaAleatoria();
     }
 }
