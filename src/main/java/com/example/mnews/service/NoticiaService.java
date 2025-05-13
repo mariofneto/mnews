@@ -39,19 +39,6 @@ public class NoticiaService {
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).build();
     }
 
-    public Mono<String> getCincoNoticias(){
-        return webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("/news")
-                        .queryParam("access_key", "4a9f8ca4f605d5db4aebd8cf5eca440b")
-                        .queryParam("category", "general")
-                        .queryParam("countries", "br")
-                        .queryParam("limit", "5")
-                        .build())
-                .retrieve()
-                .bodyToMono(String.class);
-    }
-
     public Noticia getNoticiaAleatoria() throws MessagingException {
         ApiResponse resposta = webClient.get()
                 .uri(uriBuilder -> uriBuilder
